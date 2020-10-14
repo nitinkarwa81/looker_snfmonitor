@@ -1,4 +1,4 @@
-connection: "snowflake_dw_snfmonitor"
+connection: "edw_monitoring"
 
 datagroup: snowflake_monitor_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
