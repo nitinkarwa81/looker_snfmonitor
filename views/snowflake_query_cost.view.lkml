@@ -293,7 +293,8 @@ view: snowflake_query_cost {
 
   measure: total_elapsed_time {
     type: sum
-    sql: ${TABLE}."TOTAL_ELAPSED_TIME" ;;
+    sql: ${TABLE}."TOTAL_ELAPSED_TIME"  / 86400000.0;;
+  value_format: "h:mm:ss"
   }
 
   dimension: transaction_blocked_time {
