@@ -10,7 +10,7 @@ view: organization_storage_history {
   measure: average_terabytes {
     type: sum
     sql: ${TABLE}."AVERAGE_BYTES"/(1099511627776) ;;
-    value_format: "#,##0.00"
+    value_format: "#,##0"
   }
 
   dimension: organization_name {
