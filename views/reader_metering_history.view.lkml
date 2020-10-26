@@ -2,73 +2,39 @@ view: reader_metering_history {
   sql_table_name: "SNOWFLAKE_USAGE"."READER_METERING_HISTORY"
     ;;
 
-  dimension: credits_used {
-    type: number
-    sql: ${TABLE}."CREDITS_USED" ;;
-  }
-
-  dimension: credits_used_cloud_services {
-    type: number
-    sql: ${TABLE}."CREDITS_USED_CLOUD_SERVICES" ;;
-  }
-
-  dimension: credits_used_compute {
-    type: number
-    sql: ${TABLE}."CREDITS_USED_COMPUTE" ;;
-  }
-
-  dimension_group: end {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."END_TIME" ;;
-  }
-
-  dimension_group: reader_account_deleted {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."READER_ACCOUNT_DELETED_ON" ;;
-  }
-
-  dimension: reader_account_name {
+  dimension: account_name {
     type: string
-    sql: ${TABLE}."READER_ACCOUNT_NAME" ;;
+    sql: ${TABLE}."ACCOUNT_NAME" ;;
   }
 
-  dimension_group: start {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."START_TIME" ;;
+  measure: credits_used {
+    type: sum
+    sql: ${TABLE}."CREDITS_USED" ;;
+    value_format: "#,##0.00"
+  }
+
+  measure: credits_used_cloud_services {
+    type: sum
+    sql: ${TABLE}."CREDITS_USED_CLOUD_SERVICES" ;;
+    value_format: "#,##0.00"
+  }
+
+  measure: credits_used_compute {
+    type: sum
+    sql: ${TABLE}."CREDITS_USED_COMPUTE" ;;
+    value_format: "#,##0.00"
+  }
+
+  measure: dollars_spent {
+    type: sum
+    sql: ${TABLE}."DOLLARS_SPENT" ;;
+    value_format: "$#,##0.00"
+    description: "Calculated by multiplying credits used for compute by $3.60"
   }
 
   dimension_group: usage {
     type: time
     timeframes: [
-      raw,
-      time,
       date,
       week,
       month,
@@ -78,11 +44,6 @@ view: reader_metering_history {
     sql: ${TABLE}."USAGE_DATE" ;;
   }
 
-  dimension: warehouse_id {
-    type: number
-    sql: ${TABLE}."WAREHOUSE_ID" ;;
-  }
-
   dimension: warehouse_name {
     type: string
     sql: ${TABLE}."WAREHOUSE_NAME" ;;
@@ -90,6 +51,6 @@ view: reader_metering_history {
 
   measure: count {
     type: count
-    drill_fields: [reader_account_name, warehouse_name]
+    drill_fields: [warehouse_name, account_name]
   }
 }
