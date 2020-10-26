@@ -26,8 +26,8 @@ view: organization_data_transfer_history {
 
   }
 
-  dimension: tb_transfered {
-    type: number
+  measure: tb_transfered {
+    type: sum
     sql: ${TABLE}."TB_TRANSFERED" ;;
     value_format: "#,##0.00"
   }

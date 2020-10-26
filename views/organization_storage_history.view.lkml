@@ -7,9 +7,10 @@ view: organization_storage_history {
     sql: ${TABLE}."ACCOUNT_NAME" ;;
   }
 
-  dimension: average_bytes {
-    type: number
-    sql: ${TABLE}."AVERAGE_BYTES" ;;
+  measure: average_terabytes {
+    type: sum
+    sql: ${TABLE}."AVERAGE_BYTES"/(1099511627776) ;;
+    value_format: "#,##0.00"
   }
 
   dimension: organization_name {

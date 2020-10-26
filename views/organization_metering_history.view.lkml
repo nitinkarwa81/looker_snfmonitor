@@ -12,33 +12,33 @@ view: organization_metering_history {
     sql: ${TABLE}."CREDIT_RATE" ;;
   }
 
-  dimension: credits_adjustment_cloud_services {
-    type: number
+  measure: credits_adjustment_cloud_services {
+    type: sum
     sql: ${TABLE}."CREDITS_ADJUSTMENT_CLOUD_SERVICES" ;;
   }
 
-  dimension: credits_billed {
-    type: number
+  measure: credits_billed {
+    type: sum
     sql: ${TABLE}."CREDITS_BILLED" ;;
   }
 
-  dimension: credits_used {
-    type: number
+  measure: credits_used {
+    type: sum
     sql: ${TABLE}."CREDITS_USED" ;;
   }
 
-  dimension: credits_used_cloud_services {
-    type: number
+  measure: credits_used_cloud_services {
+    type: sum
     sql: ${TABLE}."CREDITS_USED_CLOUD_SERVICES" ;;
   }
 
-  dimension: credits_used_compute {
-    type: number
+  measure: credits_used_compute {
+    type: sum
     sql: ${TABLE}."CREDITS_USED_COMPUTE" ;;
   }
 
-  dimension: dollars_spent {
-    type: number
+  measure: dollars_spent {
+    type: sum
     sql: ${TABLE}."DOLLARS_SPENT" ;;
     value_format: "$#,##0.00"
   }
