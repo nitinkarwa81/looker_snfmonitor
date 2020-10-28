@@ -16,7 +16,7 @@ view: snowflake_monthly_usage_cost {
   measure: dollars_spent {
     type: sum
     sql: ${TABLE}."DOLLARS_SPENT" ;;
-    value_format: "$#,##0.00"
+    value_format: "$#,##0"
   }
 
 
