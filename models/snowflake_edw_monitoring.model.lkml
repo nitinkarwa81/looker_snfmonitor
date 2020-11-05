@@ -59,3 +59,8 @@ explore: reader_metering_history {
   group_label:  "Snowflake Spend"
   label: "Reader Account Metering History"
 }
+
+explore: account_automatic_clustering_history {
+  group_label:  "Snowflake Spend"
+  label: "Automatic Reclustering History"
+}
