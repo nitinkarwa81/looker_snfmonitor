@@ -2,9 +2,10 @@ view: account_automatic_clustering_history {
   sql_table_name: "SNOWFLAKE_USAGE"."ACCOUNT_AUTOMATIC_CLUSTERING_HISTORY"
     ;;
 
-  dimension: credits_used {
-    type: number
+  measure: credits_used {
+    type: sum
     sql: ${TABLE}."CREDITS_USED" ;;
+
   }
 
   dimension: database_id {
@@ -29,15 +30,23 @@ view: account_automatic_clustering_history {
       year
     ]
     sql: ${TABLE}."END_TIME" ;;
+    drill_fields: [ table_name]
   }
 
-  dimension: num_bytes_reclustered {
-    type: number
+  measure: dollars_spent {
+    type: sum
+    sql: ${TABLE}."DOLLARS_SPENT" ;;
+    value_format: "$#,##0.00"
+    drill_fields: [ table_name]
+  }
+
+  measure: num_bytes_reclustered {
+    type: sum
     sql: ${TABLE}."NUM_BYTES_RECLUSTERED" ;;
   }
 
-  dimension: num_rows_reclustered {
-    type: number
+  measure: num_rows_reclustered {
+    type: sum
     sql: ${TABLE}."NUM_ROWS_RECLUSTERED" ;;
   }
 
@@ -63,6 +72,7 @@ view: account_automatic_clustering_history {
       year
     ]
     sql: ${TABLE}."START_TIME" ;;
+    drill_fields: [ table_name]
   }
 
   dimension: table_id {
