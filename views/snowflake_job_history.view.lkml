@@ -76,7 +76,7 @@ view: snowflake_job_history {
   measure: total_dollars_spent {
     type: sum
     sql: ${TABLE}."TOTAL_DOLLARS_SPENT" ;;
-    value_format: "$#,##0.000"
+    value_format: "$#,##0.00"
   }
 
   measure: total_execution_time {
