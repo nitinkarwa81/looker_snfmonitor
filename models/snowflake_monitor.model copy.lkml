@@ -6,3 +6,6 @@ datagroup: snowflake_monitor_default_datagroup {
 }
 
 persist_with: snowflake_monitor_default_datagroup
+
+
+dfdfdf
